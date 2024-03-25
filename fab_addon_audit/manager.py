@@ -1,7 +1,7 @@
 import logging
-from flask.ext.appbuilder.basemanager import BaseManager
+from flask_appbuilder.basemanager import BaseManager
 from .views import AuditLogView, AuditLogChartView
-from flask_babelpkg import lazy_gettext as _
+from flask_babel import lazy_gettext as _
 from .models import Operation
 
 log = logging.getLogger(__name__)

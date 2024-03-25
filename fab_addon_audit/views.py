@@ -1,10 +1,12 @@
 import copy
 from flask import render_template, g
-from flask.ext.appbuilder.models.sqla.interface import SQLAInterface
-from flask.ext.appbuilder.widgets import ListLinkWidget
-from flask.ext.appbuilder import ModelView
-from flask.ext.appbuilder.charts.views import DirectByChartView, GroupByChartView
-from flask.ext.appbuilder.models.group import aggregate_count, aggregate_avg, aggregate_sum
+#from flask.ext.appbuilder.models.sqla.interface import SQLAInterface
+from flask_appbuilder.models.sqla.interface import SQLAInterface
+from flask_appbuilder.widgets import ListLinkWidget
+#from flask.ext.appbuilder.widgets import ListLinkWidget
+from flask_appbuilder import ModelView
+from flask_appbuilder.charts.views import DirectByChartView, GroupByChartView
+from flask_appbuilder.models.group import aggregate_count, aggregate_avg, aggregate_sum
 from .models import AuditLog, Operation
 
 
