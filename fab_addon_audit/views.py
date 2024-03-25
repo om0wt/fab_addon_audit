@@ -1,9 +1,7 @@
 import copy
 from flask import render_template, g
-#from flask.ext.appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder.widgets import ListLinkWidget
-#from flask.ext.appbuilder.widgets import ListLinkWidget
 from flask_appbuilder import ModelView
 from flask_appbuilder.charts.views import DirectByChartView, GroupByChartView
 from flask_appbuilder.models.group import aggregate_count, aggregate_avg, aggregate_sum
@@ -57,7 +55,7 @@ class AuditLogChartView(GroupByChartView):
     chart_type = 'BarChart'
     definitions = [
         {
-            'group' : 'operation',
+            'group' : 'operation.name',
             'formatter': str,
             'series': [(aggregate_count,'operation')]
         },
