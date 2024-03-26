@@ -21,5 +21,6 @@ class AuditLog(Model):
     operation_id = Column(Integer, ForeignKey('operation.id'), nullable=False)
     operation = relationship("Operation")
     target = Column(String(150), nullable=False)
+    target_values = Column(String(100000), nullable=True)
 
 
