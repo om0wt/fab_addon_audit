@@ -86,12 +86,17 @@ class AuditedModelView(ModelView):
     def post_add(self, item):
         operation = self.insert_operation()
         target_values = json.dumps(asdict(item), sort_keys=True, indent=4)
-        self.add_log_event(str(item), operation, target_values)
+        target_values_table = json2html.convert(json=target_values, table_attributes="class=\"table table-bordered table-hover\"", escape=True)
+        self.add_log_event(str(item), operation, target_values_table)
+
+    def pre_delete(self, item):
+        json_data = json.dumps(asdict(item), sort_keys=True, indent=4)
+        self.old_target_values = json2html.convert(json=json_data, table_attributes="class=\"table table-bordered table-hover\"", escape=True)
 
     def post_delete(self, item):
         operation = self.delete_operation()
-        target_values = json.dumps(asdict(item), sort_keys=True, indent=4)
-        self.add_log_event(str(item), operation, target_values)
+        # Save deleted data
+        self.add_log_event(str(item), operation,  self.old_target_values)
 
 
 class AuditLogView(ModelView):
